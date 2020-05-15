@@ -10,7 +10,8 @@ Projek ini dibuat untuk melakukan webscraping menggunakan BeautifulSoup untuk da
 -  flask
 -  matplotlib
 
-###  Hasil 
+###  Hasil dan Analisa
 ![](screenshot.jpg)
 
 
+From the chart, There are some pieces of information we could gather regarding to the data of Ask and Bid for Yen currency in 2019. The first, The Kurs_Jual is always higher than Kurs_Beli in 2019. In August 2019, the Kurs Jual and the kurs_beli reach the highest rate among all months in 2019 to around 134 - 136. and they reach the lowest rate in month of April. From Dec to the end of year 2019, the rate of kurs jual and kurs beli steadily decresed. The rate varies from 124 to 136 for all months in 2019.
