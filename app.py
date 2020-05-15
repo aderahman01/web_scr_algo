@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 def scrap(url):
     #This is fuction for scrapping
-    url_get = requests.get('https://monexnews.com/kurs-valuta-asing.htm?kurs=JPY&searchdatefrom=01-01-2019&searchdateto=30-12-2019')
+    url_get = requests.get(url)
     soup = BeautifulSoup(url_get.content,"html.parser")
     
     #Find the key to get the information
@@ -33,14 +33,7 @@ def scrap(url):
         #get Bid
         BID = row.find_all('td')[2].text
         BID = BID.strip() #for removing the excess whitespace
-        #use the key to take information here
-        #name_of_object = row.find_all(...)[0].text
-        
-
-
-
-
-
+    
 
         temp.append(((DATE,ASK,BID))) #append the needed information 
     
@@ -48,6 +41,25 @@ def scrap(url):
 
     df = pd.DataFrame(temp, columns = ('Date','Ask','Bid')) #creating the dataframe
    #data wranggling -  try to change the data type to right data type
+    df['Date']=df['Date'].str.replace("Mei","May")
+    df['Date']=df['Date'].str.replace("Januari","Jan")
+    df['Date']=df['Date'].str.replace("Februari","Feb")
+    df['Date']=df['Date'].str.replace("Maret","Mar")
+    df['Date']=df['Date'].str.replace("April","Apr")
+    df['Date']=df['Date'].str.replace("Juni","Jun")
+    df['Date']=df['Date'].str.replace("Juli","Jul")
+    df['Date']=df['Date'].str.replace("Agustus","Aug")
+    df['Date']=df['Date'].str.replace("September","Sep")
+    df['Date']=df['Date'].str.replace("Oktober","Oct")
+    df['Date']=df['Date'].str.replace("November","Nov")
+    df['Date']=df['Date'].str.replace("Desember","Dec")
+    df['Ask'] = df['Ask'].str.replace(",",".")
+    df['Bid'] = df['Bid'].str.replace(",",".")
+    df['Ask']=df['Ask'].astype('float')
+    df['Bid']=df['Bid'].astype('float')
+    df['Date']=df['Date'].astype('datetime64')
+    df = df.sort_values(by='Date').set_index('Date')
+    
 
    #end of data wranggling
 
