@@ -4,10 +4,11 @@ Projek ini dibuat untuk melakukan webscraping menggunakan BeautifulSoup untuk da
 
 
 # Modul yang digunakan adalah sebagai berikut
-beautifulSoup4
+*beautifulSoup4
 pandas
 flask
 matplotlib
+
 Atau Bapak Ibu cukup menginstall requirements.txt dengan cara berikut
 
 pip install -r requirements.txt
